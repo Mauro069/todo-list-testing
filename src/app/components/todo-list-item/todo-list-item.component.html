@@ -1,0 +1,13 @@
+<div *ngIf="todo" class="todo">
+  <div class="top">
+    <div class="texts">
+      <span> {{ todo.description }} </span>
+      <p *ngIf="todo.createdAt">{{ todo!.createdAt | dateFormat }}</p>
+    </div>
+    <button (click)="removeTodo()">X</button>
+  </div>
+
+  <div class="status">
+    {{ todo.status | status }}
+  </div>
+</div>

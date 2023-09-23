@@ -1,0 +1,13 @@
+<div style="display: flex; align-items: center; gap: 0.5rem">
+  <label for="statusSelect">Filtrar por estado:</label>
+  <select
+    id="statusSelect"
+    [(ngModel)]="selectedStatus"
+    (change)="filterByStatus()"
+  >
+    <option value="all">Todos</option>
+    <option value="empty">{{ "empty" | status }}</option>
+    <option value="in-progress">{{ "in-progress" | status }}</option>
+    <option value="finished">{{ "finished" | status }}</option>
+  </select>
+</div>
