@@ -1,7 +1,14 @@
 <div *ngIf="todo" class="todo">
   <div class="top">
     <div class="texts">
-      <span> {{ todo.description }} </span>
+      <span
+        [ngStyle]="{
+          'text-decoration':
+            todo.status === 'finished' ? 'line-through' : 'none'
+        }"
+      >
+        {{ todo.description }}
+      </span>
       <p *ngIf="todo.createdAt">{{ todo!.createdAt | dateFormat }}</p>
     </div>
     <button (click)="removeTodo()">X</button>
