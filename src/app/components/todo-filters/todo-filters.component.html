@@ -1,7 +1,6 @@
 <div style="display: flex; align-items: center; gap: 0.5rem">
   <label for="statusSelect">Filtrar por estado:</label>
   <app-dropdown
-    [placeholder]="'Select an option'"
     [options]="filterOptions"
     [optionSelected]="selectedStatus"
     (onSelect)="filterByStatus($event)"

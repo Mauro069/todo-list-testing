@@ -1,7 +1,6 @@
 <div style="display: flex; align-items: center; gap: 0.5rem">
   <label for="orderSelect">Ordenar por fecha:</label>
   <app-dropdown
-    [placeholder]="'Select an option'"
     [options]="orderOptions"
     [optionSelected]="selectedOrder"
     (onSelect)="orderByDate($event)"
