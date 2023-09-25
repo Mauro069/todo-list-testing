@@ -7,9 +7,11 @@
     <button (click)="removeTodo()">X</button>
   </div>
 
-  <app-dropdown
-    [options]="statusOptions"
-    [optionSelected]="optionSelected"
-    (onSelect)="changeStatus($event)"
-  />
+  <div class="status">
+    <app-dropdown
+      [options]="statusOptions"
+      [optionSelected]="optionSelected"
+      (onSelect)="changeStatus($event)"
+    />
+  </div>
 </div>
