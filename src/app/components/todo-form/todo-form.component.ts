@@ -35,7 +35,6 @@ export class TodoFormComponent {
   }
 
   public changeStatus(newStatus: { value: TodoStatus; name: string }) {
-    console.log(newStatus)
     this.newTodoStatus = { value: newStatus.value, name: newStatus.name };
   }
 

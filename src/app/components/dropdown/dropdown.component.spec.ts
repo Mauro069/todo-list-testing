@@ -55,7 +55,6 @@ describe('DropdownComponent', () => {
   it('debería renderizar las opciones correctamente', () => {
     const elementosOpcion =
       fixture.nativeElement.querySelectorAll('.options .option');
-    console.log(elementosOpcion.length);
 
     expect(elementosOpcion.length).toBe(3);
   });
