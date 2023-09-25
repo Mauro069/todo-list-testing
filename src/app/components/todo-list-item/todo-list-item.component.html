@@ -7,7 +7,9 @@
     <button (click)="removeTodo()">X</button>
   </div>
 
-  <div class="status">
-    {{ todo.status | status }}
-  </div>
+  <app-dropdown
+    [options]="statusOptions"
+    [optionSelected]="optionSelected"
+    (onSelect)="changeStatus($event)"
+  />
 </div>

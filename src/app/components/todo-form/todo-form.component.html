@@ -15,7 +15,6 @@
     <div class="form-group">
       <label for="status">Estado:</label>
       <app-dropdown
-        [placeholder]="'Select an option'"
         [options]="statusOptions"
         [optionSelected]="newTodoStatus"
         (onSelect)="changeStatus($event)"

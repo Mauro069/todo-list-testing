@@ -63,6 +63,16 @@ export class TodoService {
     this.update();
   }
 
+  public changeTodoStatus(todoId: number | string, newStatus: TodoStatus) {
+    const todoIndex = this.todos.findIndex((todo) => todo.id === todoId);
+
+    if (todoIndex === -1) return;
+
+    this.todos[todoIndex].status = newStatus;
+
+    this.update();
+  }
+
   private update() {
     this.todosSubject.next(this.todos);
     this.updateLocalStorage();

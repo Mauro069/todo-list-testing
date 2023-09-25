@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoListItemComponent } from './todo-list-item.component';
 import { TodoService } from 'src/app/services/todos.service';
 import { Todo } from 'src/app/interfaces/todos.interfaces';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { ArrowComponent } from '../dropdown/components/arrow.component';
 
 describe('TodoListItemComponent', () => {
   let component: TodoListItemComponent;
@@ -10,7 +12,7 @@ describe('TodoListItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoListItemComponent],
+      declarations: [TodoListItemComponent, DropdownComponent, ArrowComponent],
       providers: [TodoService],
     });
 

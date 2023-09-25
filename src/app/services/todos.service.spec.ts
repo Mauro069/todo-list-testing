@@ -25,13 +25,13 @@ describe('TodoService', () => {
     service = TestBed.inject(TodoService);
   });
 
-  it('should be created', () => {
+  it('debería ser creado', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should add a todo', () => {
+  it('debería agregar un todo', () => {
     const newTodo: Todo = {
-      id: 1,
+      id: 3,
       description: 'Test Todo',
       status: 'empty',
       createdAt: '2023-09-22',
@@ -42,7 +42,7 @@ describe('TodoService', () => {
     });
   });
 
-  it('should remove a todo', () => {
+  it('debería eliminar un todo', () => {
     const todoIdToRemove = 1;
     service.removeTodo(todoIdToRemove);
     service.getTodos().subscribe((todos) => {
@@ -51,7 +51,7 @@ describe('TodoService', () => {
     });
   });
 
-  it('should filter todos by status', () => {
+  it('debería filtrar los todos por estado', () => {
     const statusFilter: TodoStatus = 'empty';
     service.filterByStatus(statusFilter).subscribe((filteredTodos) => {
       expect(filteredTodos.every((todo) => todo.status === statusFilter)).toBe(
@@ -60,7 +60,7 @@ describe('TodoService', () => {
     });
   });
 
-  it('should order todos by date (newest)', () => {
+  it('debería ordenar los todos por fecha (más nuevo primero)', () => {
     service['todos'] = [...initialTodos];
     service.orderByDate('newest');
     service.getTodos().subscribe((orderedTodos) => {
@@ -70,13 +70,34 @@ describe('TodoService', () => {
     });
   });
 
-  it('should order todos by date (oldest)', () => {
+  it('debería ordenar los todos por fecha (más antiguo primero)', () => {
     service['todos'] = [...initialTodos];
     service.orderByDate('oldest');
     service.getTodos().subscribe((orderedTodos) => {
       const orderedIds = orderedTodos.map((todo) => todo.id);
       const expectedOrder = initialTodos.map((todo) => todo.id);
       expect(orderedIds).toEqual(expectedOrder);
+    });
+  });
+
+  it('debería cambiar el estado de un todo', () => {
+    const newTodo: Todo = {
+      id: 3,
+      description: 'Test Todo',
+      status: 'empty',
+      createdAt: '2023-09-22',
+    };
+
+    service.addTodo(newTodo)
+
+
+
+    const todoIdToChange = 3;
+    const newStatus: TodoStatus = 'in-progress';
+    service.changeTodoStatus(todoIdToChange, newStatus);
+    service.getTodos().subscribe((todos) => {
+      const changedTodo = todos.find((todo) => todo.id === todoIdToChange);
+      expect(changedTodo?.status).toBe(newStatus);
     });
   });
 });
