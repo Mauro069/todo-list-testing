@@ -3,6 +3,9 @@ import { TodoFormComponent } from './todo-form.component';
 import { TodoService } from 'src/app/services/todos.service';
 import { TodoStatus } from 'src/app/interfaces/todos.interfaces';
 import { StatusPipe } from 'src/app/pipes/status.pipe';
+import { traductions } from 'src/app/utils/traductions';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { ArrowComponent } from '../dropdown/components/arrow.component';
 
 describe('TodoFormComponent', () => {
   let component: TodoFormComponent;
@@ -11,7 +14,12 @@ describe('TodoFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoFormComponent, StatusPipe],
+      declarations: [
+        TodoFormComponent,
+        DropdownComponent,
+        ArrowComponent,
+        StatusPipe,
+      ],
       providers: [TodoService],
     });
 
@@ -29,7 +37,10 @@ describe('TodoFormComponent', () => {
     const nuevoEstadoTarea: TodoStatus = 'empty';
 
     component.newTodoDescription = nuevaDescripcionTarea;
-    component.newTodoStatus = nuevoEstadoTarea;
+    component.newTodoStatus = {
+      value: nuevoEstadoTarea,
+      name: traductions[nuevoEstadoTarea],
+    };
 
     const addTodoSpy = spyOn(todoService, 'addTodo').and.stub();
 
@@ -38,6 +49,6 @@ describe('TodoFormComponent', () => {
     expect(addTodoSpy).toHaveBeenCalled();
 
     expect(component.newTodoDescription).toBe('');
-    expect(component.newTodoStatus).toBe('empty');
+    expect(component.newTodoStatus.value).toBe('empty');
   });
 });
