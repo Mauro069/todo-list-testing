@@ -10,6 +10,8 @@ import { TodoFiltersComponent } from './components/todo-filters/todo-filters.com
 import { TodoOrdersComponent } from './components/todo-orders/todo-orders.component';
 import { DatePipe } from './pipes/date.pipe';
 import { StatusPipe } from './pipes/status.pipe';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { ArrowComponent } from './components/dropdown/components/arrow.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { StatusPipe } from './pipes/status.pipe';
     TodoListItemComponent,
     TodoFiltersComponent,
     TodoOrdersComponent,
+    DropdownComponent,
+    ArrowComponent,
     DatePipe,
     StatusPipe,
   ],

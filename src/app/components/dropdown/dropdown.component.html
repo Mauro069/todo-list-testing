@@ -1,0 +1,22 @@
+<div class="selectContainer">
+  <div (click)="toggleDropdown()" class="select">
+    <ng-container *ngIf="optionSelected?.name; else placeholderTemplate">
+      <p class="option-selected">
+        <span>{{ optionSelected.name }}</span>
+      </p>
+    </ng-container>
+    <ng-template #placeholderTemplate>
+      <span class="withOpacity">{{ placeholder }}</span>
+    </ng-template>
+    <app-arrow [open]="open" />
+  </div>
+  <div class="options" *ngIf="open">
+    <div
+      *ngFor="let option of options"
+      class="option"
+      (click)="selectOption(option)"
+    >
+      <span>{{ option.name }}</span>
+    </div>
+  </div>
+</div>
