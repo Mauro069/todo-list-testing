@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Todo, TodoStatus } from 'src/app/interfaces/todos.interfaces';
 import { TodoService } from 'src/app/services/todos.service';
+import { traductions } from 'src/app/utils/traductions';
 
 @Component({
   selector: 'app-todo-form',
@@ -9,7 +10,10 @@ import { TodoService } from 'src/app/services/todos.service';
 })
 export class TodoFormComponent {
   newTodoDescription: string = '';
-  newTodoStatus: TodoStatus = 'empty';
+  newTodoStatus: { value: TodoStatus; name: string } = {
+    value: 'empty',
+    name: 'Por empezar',
+  };
 
   private todosService = inject(TodoService);
 
@@ -17,13 +21,36 @@ export class TodoFormComponent {
     const newTodo: Todo = {
       id: Math.random(),
       description: this.newTodoDescription,
-      status: this.newTodoStatus,
+      status: this.newTodoStatus.value,
       createdAt: new Date(),
     };
 
     this.todosService.addTodo(newTodo);
 
     this.newTodoDescription = '';
-    this.newTodoStatus = 'empty';
+    this.newTodoStatus = {
+      value: 'empty',
+      name: 'Por empezar',
+    };
   }
+
+  public changeStatus(newStatus: { value: TodoStatus; name: string }) {
+    console.log(newStatus)
+    this.newTodoStatus = { value: newStatus.value, name: newStatus.name };
+  }
+
+  public statusOptions = [
+    {
+      value: 'empty',
+      name: traductions['empty'],
+    },
+    {
+      value: 'in-progress',
+      name: traductions['in-progress'],
+    },
+    {
+      value: 'finished',
+      name: traductions['finished'],
+    },
+  ];
 }

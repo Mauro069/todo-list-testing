@@ -1,7 +1,9 @@
 <div style="display: flex; align-items: center; gap: 0.5rem">
   <label for="orderSelect">Ordenar por fecha:</label>
-  <select id="orderSelect" [(ngModel)]="selectedOrder" (change)="orderByDate()">
-    <option value="newest">Más Nueva a Más Vieja</option>
-    <option value="oldest">Más Vieja a Más Nueva</option>
-  </select>
+  <app-dropdown
+    [placeholder]="'Select an option'"
+    [options]="orderOptions"
+    [optionSelected]="selectedOrder"
+    (onSelect)="orderByDate($event)"
+  />
 </div>

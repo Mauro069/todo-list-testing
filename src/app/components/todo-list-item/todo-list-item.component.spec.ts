@@ -19,30 +19,28 @@ describe('TodoListItemComponent', () => {
     todoService = TestBed.inject(TodoService);
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call removeTodo on todoService when removeTodo is called', () => {
-    // Crear un mock para el objeto todo
+  it('debería llamar a removeTodo en todoService cuando se llama a removeTodo', () => {
     const mockTodo: Todo = {
       id: 1,
-      description: 'Test Todo',
+      description: 'Tarea de prueba',
       status: 'empty',
       createdAt: '2023-09-22',
     };
 
-    // Establecer el objeto todo en el componente
     component.todo = mockTodo;
 
-    spyOn(todoService, 'removeTodo'); // Espiar el método removeTodo del servicio
+    spyOn(todoService, 'removeTodo');
     component.removeTodo();
-    expect(todoService.removeTodo).toHaveBeenCalledWith(mockTodo.id); // Verificar que se llamó con el ID correcto
+    expect(todoService.removeTodo).toHaveBeenCalledWith(mockTodo.id);
   });
 
-  it('should not call removeTodo on todoService when removeTodo is called with undefined todo', () => {
-    spyOn(todoService, 'removeTodo'); // Espiar el método removeTodo del servicio
+  it('no debería llamar a removeTodo en todoService cuando se llama a removeTodo con un objeto de tarea indefinido', () => {
+    spyOn(todoService, 'removeTodo');
     component.removeTodo();
-    expect(todoService.removeTodo).not.toHaveBeenCalled(); // Verificar que no se llamó
+    expect(todoService.removeTodo).not.toHaveBeenCalled();
   });
 });

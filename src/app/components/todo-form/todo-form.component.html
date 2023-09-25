@@ -14,11 +14,12 @@
     </div>
     <div class="form-group">
       <label for="status">Estado:</label>
-      <select id="status" name="status" [(ngModel)]="newTodoStatus">
-        <option value="empty">{{ "empty" | status }}</option>
-        <option value="in-progress">{{ "in-progress" | status }}</option>
-        <option value="finished">{{ "finished" | status }}</option>
-      </select>
+      <app-dropdown
+        [placeholder]="'Select an option'"
+        [options]="statusOptions"
+        [optionSelected]="newTodoStatus"
+        (onSelect)="changeStatus($event)"
+      />
     </div>
   </div>
   <button type="submit">Agregar Tarea</button>

@@ -20,26 +20,23 @@ describe('TodoFormComponent', () => {
     todoService = TestBed.inject(TodoService);
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should add a new todo', () => {
-    const newTodoDescription = 'Test Todo';
-    const newTodoStatus: TodoStatus = 'empty';
+  it('debería agregar una nueva tarea', () => {
+    const nuevaDescripcionTarea = 'Tarea de prueba';
+    const nuevoEstadoTarea: TodoStatus = 'empty';
 
-    component.newTodoDescription = newTodoDescription;
-    component.newTodoStatus = newTodoStatus;
+    component.newTodoDescription = nuevaDescripcionTarea;
+    component.newTodoStatus = nuevoEstadoTarea;
 
-    // Espía la función addTodo en el servicio antes de llamarla
     const addTodoSpy = spyOn(todoService, 'addTodo').and.stub();
 
     component.addTodo();
 
-    // Verifica que se haya llamado a la función addTodo en el servicio
     expect(addTodoSpy).toHaveBeenCalled();
 
-    // Verifica que los campos de entrada se hayan restablecido después de agregar la tarea
     expect(component.newTodoDescription).toBe('');
     expect(component.newTodoStatus).toBe('empty');
   });

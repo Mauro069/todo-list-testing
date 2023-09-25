@@ -8,11 +8,26 @@ import { TodoService } from 'src/app/services/todos.service';
   styleUrls: ['./todo-orders.component.scss'],
 })
 export class TodoOrdersComponent {
-  selectedOrder: Orders = 'newest';
+  selectedOrder: { value: Orders; name: string } = {
+    value: 'newest',
+    name: 'Más Nueva a Más Vieja',
+  };
 
   private todoService = inject(TodoService);
 
-  orderByDate() {
-    this.todoService.orderByDate(this.selectedOrder);
+  orderByDate(selectedOrder: { value: Orders; name: string }) {
+    this.selectedOrder = selectedOrder 
+    this.todoService.orderByDate(selectedOrder.value);
   }
+
+  public orderOptions = [
+    {
+      value: 'newest',
+      name: 'Más Nueva a Más Vieja',
+    },
+    {
+      value: 'oldest',
+      name: 'Más Vieja a Más Nueva',
+    },
+  ];
 }

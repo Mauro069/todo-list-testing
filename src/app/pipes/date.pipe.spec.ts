@@ -7,32 +7,33 @@ describe('DatePipe', () => {
     pipe = new DatePipe();
   });
 
-  it('create an instance', () => {
+  it('debería crear una instancia del pipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should transform "2023-09-22" to "Hoy"', () => {
-    const inputDate = '2023/09/22';
-    const result = pipe.transform(inputDate);
+  it('debería transformar la fecha actual a "Hoy"', () => {
+    const fechaActual = new Date();
+    const resultado = pipe.transform(fechaActual);
 
-    expect(result).toEqual('Hoy');
+    expect(resultado).toEqual('Hoy');
   });
 
-  it('should transform "2023-09-21" to "Ayer"', () => {
-    const inputDate = '2023/09/21';
-    const result = pipe.transform(inputDate);
-    expect(result).toEqual('Ayer');
+  it('debería transformar la fecha de ayer a "Ayer"', () => {
+    const fechaDeAyer = new Date();
+    fechaDeAyer.setDate(fechaDeAyer.getDate() - 1);
+    const resultado = pipe.transform(fechaDeAyer);
+    expect(resultado).toEqual('Ayer');
   });
 
-  it('should transform "2023-09-20" to "20/09/2023"', () => {
-    const inputDate = '2023/09/20';
-    const result = pipe.transform(inputDate);
-    expect(result).toEqual('20/09/2023');
+  it('debería transformar una fecha que no sea ni ayer ni hoy a otro formato', () => {
+    const fechaNoHoyNiAyer = '2023/09/20';
+    const resultado = pipe.transform(fechaNoHoyNiAyer);
+    expect(resultado).toEqual('20/09/2023');
   });
 
-  it('should transform an invalid date to an empty string', () => {
-    const inputDate = 'invalid-date';
-    const result = pipe.transform(inputDate);
-    expect(result).toEqual('');
+  it('debería devolver una cadena vacía si se proporciona una fecha inválida', () => {
+    const fechaInvalida = 'fecha-invalida';
+    const resultado = pipe.transform(fechaInvalida);
+    expect(resultado).toEqual('');
   });
 });

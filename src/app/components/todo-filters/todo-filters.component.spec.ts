@@ -4,6 +4,9 @@ import { TodoService } from 'src/app/services/todos.service';
 import { FilterStatus } from 'src/app/interfaces/todos.interfaces';
 import { of } from 'rxjs';
 import { StatusPipe } from 'src/app/pipes/status.pipe';
+import { traductions } from 'src/app/utils/traductions';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { ArrowComponent } from '../dropdown/components/arrow.component';
 
 describe('TodoFiltersComponent', () => {
   let component: TodoFiltersComponent;
@@ -12,7 +15,12 @@ describe('TodoFiltersComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoFiltersComponent, StatusPipe],
+      declarations: [
+        TodoFiltersComponent,
+        DropdownComponent,
+        ArrowComponent,
+        StatusPipe,
+      ],
       providers: [TodoService],
     });
 
@@ -21,31 +29,33 @@ describe('TodoFiltersComponent', () => {
     todoService = TestBed.inject(TodoService);
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should filter todos by status', () => {
-    const statusFilter: FilterStatus = 'empty';
+  it('debería filtrar tareas por estado', () => {
+    const estadoFiltro: FilterStatus = 'empty';
 
-    component.selectedStatus = statusFilter;
+    component.selectedStatus = {
+      name: traductions[estadoFiltro],
+      value: estadoFiltro,
+    };
+
     const filterByStatusSpy = spyOn(
       todoService,
       'filterByStatus'
     ).and.returnValue(of([]));
 
-    component.filterByStatus();
+    component.filterByStatus(component.selectedStatus);
 
-    expect(filterByStatusSpy).toHaveBeenCalledWith(statusFilter);
+    expect(filterByStatusSpy).toHaveBeenCalledWith(estadoFiltro);
   });
 
-  it('should update selectedStatus when filterSubject changes', () => {
-    const statusFilter: FilterStatus = 'in-progress';
+  it('debería actualizar selectedStatus cuando cambia filterSubject', () => {
+    const estadoFiltro: FilterStatus = 'in-progress';
 
-    // Simula un cambio en el filterSubject del servicio
-    todoService.filterSubject.next(statusFilter);
+    todoService.filterSubject.next(estadoFiltro);
 
-    // Verifica que selectedStatus se haya actualizado correctamente
-    expect(component.selectedStatus).toBe(statusFilter);
+    expect(component.selectedStatus.value).toBe(estadoFiltro);
   });
 });

@@ -23,42 +23,40 @@ describe('TodoListComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display todos when todoList is provided', () => {
-    const mockTodos: Todo[] = [
+  it('debería mostrar las tareas cuando se proporciona una lista de tareas', () => {
+    const tareasMock: Todo[] = [
       {
         id: 1,
-        description: 'Todo 1',
+        description: 'Tarea 1',
         status: 'empty',
         createdAt: '2023-09-22',
       },
       {
         id: 2,
-        description: 'Todo 2',
+        description: 'Tarea 2',
         status: 'empty',
         createdAt: '2023-09-23',
       },
     ];
 
-    component.todoList = mockTodos;
-
-    console.log(component);
+    component.todoList = tareasMock;
     fixture.detectChanges();
 
-    const todoElements =
+    const elementosDeTareas =
       fixture.nativeElement.querySelectorAll('.todo-list-item');
-    expect(todoElements.length).toBe(mockTodos.length);
+    expect(elementosDeTareas.length).toBe(tareasMock.length);
   });
 
-  it('should not display any todos when todoList is null', () => {
+  it('no debería mostrar ninguna tarea cuando la lista de tareas es nula', () => {
     component.todoList = null;
     fixture.detectChanges();
 
-    const todoElements =
+    const elementosDeTareas =
       fixture.nativeElement.querySelectorAll('.todo-list-item');
-    expect(todoElements.length).toBe(0);
+    expect(elementosDeTareas.length).toBe(0);
   });
 });

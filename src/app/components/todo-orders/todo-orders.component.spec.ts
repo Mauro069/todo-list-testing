@@ -18,15 +18,15 @@ describe('TodoOrdersComponent', () => {
     todoService = TestBed.inject(TodoService);
   });
 
-  it('should create', () => {
+  it('debería crear el componente', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set default order to "newest"', () => {
+  it('debería establecer el orden predeterminado como "más nuevo"', () => {
     expect(component.selectedOrder).toBe('newest');
   });
 
-  it('should call orderByDate on todoService when orderByDate is called', () => {
+  it('debería llamar a orderByDate en todoService cuando se llama a orderByDate', () => {
     spyOn(todoService, 'orderByDate');
     component.orderByDate();
     expect(todoService.orderByDate).toHaveBeenCalledWith('newest');

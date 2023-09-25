@@ -7,25 +7,25 @@ describe('StatusPipe', () => {
     pipe = new StatusPipe();
   });
 
-  it('create an instance', () => {
+  it('debería crear una instancia del pipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('should transform "empty" to "Por empezar"', () => {
-    const inputStatus = 'empty';
-    const result = pipe.transform(inputStatus);
-    expect(result).toEqual('Por empezar');
+  it('debería transformar "empty" a "Por empezar"', () => {
+    const estadoInput = 'empty';
+    const resultado = pipe.transform(estadoInput);
+    expect(resultado).toEqual('Por empezar');
   });
 
-  it('should transform "in-progress" to "En proceso"', () => {
-    const inputStatus = 'in-progress';
-    const result = pipe.transform(inputStatus);
-    expect(result).toEqual('En proceso');
+  it('debería transformar "in-progress" a "En proceso"', () => {
+    const estadoInput = 'in-progress';
+    const resultado = pipe.transform(estadoInput);
+    expect(resultado).toEqual('En proceso');
   });
 
-  it('should transform "finished" to "Terminada"', () => {
-    const inputStatus = 'finished';
-    const result = pipe.transform(inputStatus);
-    expect(result).toEqual('Terminada');
+  it('debería transformar "finished" a "Terminada"', () => {
+    const estadoInput = 'finished';
+    const resultado = pipe.transform(estadoInput);
+    expect(resultado).toEqual('Terminada');
   });
 });
