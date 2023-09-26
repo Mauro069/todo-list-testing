@@ -1,11 +1,13 @@
 <div class="container">
   <h1>Todo App</h1>
-  <!-- <div class="header">
+
+  <app-todo-form />
+
+  <div class="filters">
+    <h2>Filtros</h2>
     <app-todo-filters />
     <app-todo-orders />
   </div>
-  <hr />
-  <app-todo-form />
-  <hr /> -->
+
   <app-todo-list class="todo-list" [todoList]="todoList" />
 </div>

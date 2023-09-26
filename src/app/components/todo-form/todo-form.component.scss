@@ -1,39 +1,45 @@
 .todo-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
     margin: 1rem 0;
+    padding: 1rem;
+    background-color: #ffffff05;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
 
-    h2 {
-        margin: 0;
-    }
-
-    .inputs {
+    .form-group {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         gap: 1rem;
 
-        .form-group {
-            display: flex;
-            gap: .5rem;
+        label {
+            font-size: 14px;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            outline: none;
+            border: 1px solid #29292F;
+            padding: .4rem;
+            color: #DADADA;
         }
     }
 
     button {
-        background-color: black;
+        background: transparent;
         border: none;
+        border: 1px solid #ffffff90;
         color: white;
-        font-weight: bold;
-        padding: 0.5rem;
-        transition-duration: .3s;
-        border: 1px solid transparent;
+        height: 100%;
+        padding: 1rem;
         cursor: pointer;
+        font-weight: 500;
+        transition-duration: .3s;
 
         &:hover {
-            background-color: white;
-            border: 1px solid black;
-            color: black;
+            background-color: #29292F;
         }
     }
 }

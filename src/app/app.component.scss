@@ -14,33 +14,40 @@
     border: 1px solid #29292F;
     box-shadow: 0px 4px 15px 0px rgba(180, 180, 180, 0.05);
     border-bottom: none;
-}
-
-h1 {
-    font-size: 26px;
     color: white;
-    align-self: center;
-}
 
-.header {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    margin: 1rem 0;
+    h1 {
+        font-size: 26px;
+        align-self: center;
+    }
 }
 
 .todo-list {
-
     margin: 1rem 0;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
 
+.todo-list::-webkit-scrollbar {
+    width: 2px;
+    background: #251f2b;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 3px solid #ffffff25;
+}
+
+.filters {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #ffffff05;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    column-gap: 1rem;
-
-    overflow-y: auto;
 }
