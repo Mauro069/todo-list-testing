@@ -11,6 +11,8 @@ export class DropdownComponent {
   @Input() optionSelected: any | null;
   @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
 
+  public optionsFiltered: any[] = [];
+
   public open: boolean = false;
 
   toggleDropdown() {
@@ -20,5 +22,11 @@ export class DropdownComponent {
   selectOption(option: any) {
     this.onSelect.emit(option);
     this.open = false;
+  }
+
+  ngOnInit() {
+    this.optionsFiltered = this.options.filter(
+      (option) => option.value !== this.optionSelected.value
+    );
   }
 }

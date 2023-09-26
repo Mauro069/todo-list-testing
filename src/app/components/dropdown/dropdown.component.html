@@ -12,7 +12,7 @@
   </div>
   <div class="options" *ngIf="open">
     <div
-      *ngFor="let option of options"
+      *ngFor="let option of optionsFiltered"
       class="option"
       (click)="selectOption(option)"
     >
