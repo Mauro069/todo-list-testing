@@ -3,7 +3,6 @@ import { TodoFiltersComponent } from './todo-filters.component';
 import { TodoService } from 'src/app/services/todos.service';
 import { FilterStatus } from 'src/app/interfaces/todos.interfaces';
 import { of } from 'rxjs';
-import { StatusPipe } from 'src/app/pipes/status.pipe';
 import { traductions } from 'src/app/utils/traductions';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ArrowComponent } from '../dropdown/components/arrow.component';
@@ -15,12 +14,7 @@ describe('TodoFiltersComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TodoFiltersComponent,
-        DropdownComponent,
-        ArrowComponent,
-        StatusPipe,
-      ],
+      declarations: [TodoFiltersComponent, DropdownComponent, ArrowComponent],
       providers: [TodoService],
     });
 

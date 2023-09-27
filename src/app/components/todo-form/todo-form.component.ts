@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
 import { Todo, TodoStatus } from 'src/app/interfaces/todos.interfaces';
 import { TodoService } from 'src/app/services/todos.service';
-import { traductions } from 'src/app/utils/traductions';
+import { formOptions } from 'src/app/config/options';
+import { Component, inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-todo-form',
@@ -9,15 +10,12 @@ import { traductions } from 'src/app/utils/traductions';
   styleUrls: ['./todo-form.component.scss'],
 })
 export class TodoFormComponent {
-  newTodoDescription: string = '';
-  newTodoStatus: { value: TodoStatus; name: string } = {
-    value: 'empty',
-    name: 'Por empezar',
-  };
-
   private todosService = inject(TodoService);
+  public newTodoDescription: string = '';
+  public newTodoStatus: { value: TodoStatus; name: string } = formOptions[0];
+  public statusOptions = formOptions;
 
-  addTodo() {
+  public addTodo() {
     const newTodo: Todo = {
       id: Math.random(),
       description: this.newTodoDescription,
@@ -37,19 +35,4 @@ export class TodoFormComponent {
   public changeStatus(newStatus: { value: TodoStatus; name: string }) {
     this.newTodoStatus = { value: newStatus.value, name: newStatus.name };
   }
-
-  public statusOptions = [
-    {
-      value: 'empty',
-      name: traductions['empty'],
-    },
-    {
-      value: 'in-progress',
-      name: traductions['in-progress'],
-    },
-    {
-      value: 'finished',
-      name: traductions['finished'],
-    },
-  ];
 }

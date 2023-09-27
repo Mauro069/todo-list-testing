@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
 import { Orders } from 'src/app/interfaces/todos.interfaces';
 import { TodoService } from 'src/app/services/todos.service';
+import { orderOptions } from 'src/app/config/options';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-todo-orders',
@@ -8,26 +9,12 @@ import { TodoService } from 'src/app/services/todos.service';
   styleUrls: ['./todo-orders.component.scss'],
 })
 export class TodoOrdersComponent {
-  selectedOrder: { value: Orders; name: string } = {
-    value: 'newest',
-    name: 'Más Nueva a Más Vieja',
-  };
-
   private todoService = inject(TodoService);
+  public selectedOrder: { value: Orders; name: string } = orderOptions[0];
+  public orderOptions = orderOptions;
 
   orderByDate(selectedOrder: { value: Orders; name: string }) {
-    this.selectedOrder = selectedOrder 
+    this.selectedOrder = selectedOrder;
     this.todoService.orderByDate(selectedOrder.value);
   }
-
-  public orderOptions = [
-    {
-      value: 'newest',
-      name: 'Más Nueva a Más Vieja',
-    },
-    {
-      value: 'oldest',
-      name: 'Más Vieja a Más Nueva',
-    },
-  ];
 }

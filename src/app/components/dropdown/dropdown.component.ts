@@ -13,11 +13,11 @@ export class DropdownComponent {
 
   public open: boolean = false;
 
-  toggleDropdown() {
+  public toggleDropdown() {
     this.open = !this.open;
   }
 
-  selectOption(option: any) {
+  public selectOption(option: any) {
     this.onSelect.emit(option);
 
     this.open = false;

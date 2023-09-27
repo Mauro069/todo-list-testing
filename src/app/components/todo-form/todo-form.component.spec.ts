@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoFormComponent } from './todo-form.component';
 import { TodoService } from 'src/app/services/todos.service';
 import { TodoStatus } from 'src/app/interfaces/todos.interfaces';
-import { StatusPipe } from 'src/app/pipes/status.pipe';
 import { traductions } from 'src/app/utils/traductions';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ArrowComponent } from '../dropdown/components/arrow.component';
@@ -14,12 +13,7 @@ describe('TodoFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TodoFormComponent,
-        DropdownComponent,
-        ArrowComponent,
-        StatusPipe,
-      ],
+      declarations: [TodoFormComponent, DropdownComponent, ArrowComponent],
       providers: [TodoService],
     });
 

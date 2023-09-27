@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoListComponent } from './todo-list.component';
 import { Todo } from 'src/app/interfaces/todos.interfaces';
 import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
-import { StatusPipe } from 'src/app/pipes/status.pipe';
 import { DatePipe } from 'src/app/pipes/date.pipe';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ArrowComponent } from '../dropdown/components/arrow.component';
@@ -16,7 +15,6 @@ describe('TodoListComponent', () => {
       declarations: [
         TodoListComponent,
         TodoListItemComponent,
-        StatusPipe,
         DatePipe,
         DropdownComponent,
         ArrowComponent,

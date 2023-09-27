@@ -1,7 +1,8 @@
 import { FilterStatus } from 'src/app/interfaces/todos.interfaces';
 import { TodoService } from 'src/app/services/todos.service';
-import { Component, inject } from '@angular/core';
 import { traductions } from 'src/app/utils/traductions';
+import { filterOptions } from 'src/app/config/options';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-todo-filters',
@@ -9,11 +10,9 @@ import { traductions } from 'src/app/utils/traductions';
   styleUrls: ['./todo-filters.component.scss'],
 })
 export class TodoFiltersComponent {
-  public selectedStatus: { name: string; value: FilterStatus } = {
-    value: 'all',
-    name: traductions['all'],
-  };
+  public selectedStatus: { name: string; value: FilterStatus } = filterOptions[0]
   private todosService = inject(TodoService);
+  public filterOptions = filterOptions
 
   constructor() {
     this.todosService.filterSubject.pipe().subscribe((filter) => {
@@ -25,22 +24,4 @@ export class TodoFiltersComponent {
     this.todosService.filterByStatus(selectedStatus.value);
   }
 
-  public filterOptions = [
-    {
-      value: 'all',
-      name: traductions['all'],
-    },
-    {
-      value: 'empty',
-      name: traductions['empty'],
-    },
-    {
-      value: 'in-progress',
-      name: traductions['in-progress'],
-    },
-    {
-      value: 'finished',
-      name: traductions['finished'],
-    },
-  ];
 }
