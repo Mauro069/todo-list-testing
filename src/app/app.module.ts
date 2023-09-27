@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { TodoFiltersComponent } from './components/todo-filters/todo-filters.component';
 import { TodoOrdersComponent } from './components/todo-orders/todo-orders.component';
 import { DatePipe } from './pipes/date.pipe';
-import { StatusPipe } from './pipes/status.pipe';
+
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { ArrowComponent } from './components/dropdown/components/arrow.component';
 
@@ -24,7 +24,6 @@ import { ArrowComponent } from './components/dropdown/components/arrow.component
     DropdownComponent,
     ArrowComponent,
     DatePipe,
-    StatusPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
